@@ -156,7 +156,7 @@ def find_unique_in_part(table):
                             value_checked[v] = True
                             # if there is no other cells that could be of the same value, then cell index[i] is of the value v
                             found_flag = False
-                            for j in range(i + 1, len(range)):
+                            for j in range(i + 1, len(indexes)):
                                 if table[indexes[j]].values[v] == True:
                                     found_flag = True
                                     break
@@ -188,6 +188,7 @@ if __name__ == "__main__":
         x, y, value = get_input()
 
         update_map(table, x, y, value)
+        find_unique_in_part(table)
     
     os.system("clear")
     print_map(table)
