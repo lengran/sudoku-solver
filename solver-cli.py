@@ -50,6 +50,12 @@ if __name__ == "__main__":
         print_map(sudoku_solver.table)
         x, y, value = get_input()
 
+        if value == 0:
+            sudoku_solver.search_for_possible_solution()
+            os.system("clear")
+            print_map(sudoku_solver.table)
+            exit()
+
         sudoku_solver.update_table(x, y, value)
         sudoku_solver.find_unique_in_part()
     

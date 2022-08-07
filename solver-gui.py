@@ -17,6 +17,8 @@ class MyWindow(Window):
 class ChooseWin(Window):
 
     def onClose(self, data):
+        CELL_INFO.pop()
+        CELL_INFO.pop()
         super().onClose(data)
 
 class ChooseCbox(Combobox):
@@ -62,9 +64,14 @@ class Calculate(Button):
             tmp_index, tmp_value = sudoku_solver.update_table(CELL_TO_COMPUTE[i][0], CELL_TO_COMPUTE[i][1], CELL_VALUE[i])
             result_index.extend(tmp_index)
             result_value.extend(tmp_value)
-        tmp_index, tmp_value = sudoku_solver.find_unique_in_part()
-        result_index.extend(tmp_index)
-        result_value.extend(tmp_value)
+        if sudoku_solver.unsolved_cell_count > 0:
+            tmp_index, tmp_value = sudoku_solver.find_unique_in_part()
+            result_index.extend(tmp_index)
+            result_value.extend(tmp_value)
+        if sudoku_solver.unsolved_cell_count > 0:
+            tmp_index, tmp_value = sudoku_solver.search_for_possible_solution()
+            result_index.extend(tmp_index)
+            result_value.extend(tmp_value)
         # Refresh UI
         for i in range(len(result_index)):
             x = int(result_index[i] / 9)
