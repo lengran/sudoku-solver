@@ -118,7 +118,7 @@ for i in range(9):
         vbox.children[i + int(i / 3) + 1].children[j + int(j / 3) + 1].y = j
 
 vbox.append(Calculate("Calculate"))
-app_info = Label("Version v0.2       https://github.com/lengran/sudoku-solver")
+app_info = Label("Version v1.0       https://github.com/lengran/sudoku-solver")
 app_info.setEnabled(False)
 vbox.append(app_info)
 
